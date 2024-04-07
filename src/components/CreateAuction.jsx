@@ -10,11 +10,7 @@ const CreateAuction = () => {
     const [startingPrice, setStartingPrice] = useState("")
     const [createdBy, setCreatedBy] = useState("")
 
-    const URL = 'https://auctioneer.azurewebsites.net/auction/5mlk'
-
-    const todaysDate = new Date;
-    console.log(todaysDate.getFullYear(), todaysDate.getMonth() + 1, todaysDate.getDay(), todaysDate.getHours(), todaysDate.getMinutes())
-
+    const URL = 'https://auctioneer2.azurewebsites.net/auction/5mlk'
 
 const newAuction = () => {
     fetch(URL, {
