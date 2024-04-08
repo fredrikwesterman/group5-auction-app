@@ -13,7 +13,7 @@ function App() {
         <Routes>
             <Route exact path="/" element={<Home/>}></Route>
             <Route path="/create-auction" element={<CreateAuction/>}></Route>
-            <Route path="/single-auction" element={<SingleAuction/>}></Route>
+            <Route path="/single-auction/:id" element={<SingleAuction/>}></Route>
         </Routes>
     </div>
   )
