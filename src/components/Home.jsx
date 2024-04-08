@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
 import homeStyle from '../styles/Home.module.css'
-import SingleAuction from "./SingleAuction";
 
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
 // Det här är starten. Vi säger att vi vill göra en sida som vi kallar för 'Home'.
@@ -44,14 +43,13 @@ const Home = () => {
   
     return (
       <>
-      <SearchAuction setSearchInput={setSearchInput}/>
+      <div className={homeStyle.searchbar}>
+        <SearchAuction setSearchInput={setSearchInput}/>
+      </div>
       {searchAuctions ? <SearchResults searchAuctions={searchAuctions}/> : <h1>No Auctions found 🤷‍♂️</h1>}
-
-{/* Auktioner som end date som har gått ut ska inte visas i listan */}
 
       <div className={homeStyle.auctionCardContainer}>
             {allAuctions && allAuctions.map(auction => (
-              <>
                   <div key={auction.AuctionID} className={homeStyle.auctionCard}>
                     <h3>{auction.Title}</h3>
                     <p><b>Seller:</b> {auction.CreatedBy}</p>
@@ -59,9 +57,12 @@ const Home = () => {
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                    <button><NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }} >Go to auction</NavLink></button>
+                    <button className={homeStyle.auctionBtn}>
+                      <NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
+                        Go to auction
+                      </NavLink>
+                    </button>
                   </div>
-              </>
             ))}
         </div>
       </>
