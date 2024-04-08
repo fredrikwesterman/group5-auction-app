@@ -1,32 +1,52 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react';
 
-const SingleAuction = () => {
-    const BIDS_URL = 'https://auctioneer.azurewebsites.net/bid/5mlk/200'
-
-    const [bidList, setBidList] = useState(null)
-    
+const SingleAuction = ({ match, auctionID }) => {
+    const [auction, setAuction] = useState(null);
+    const [error, setError] = useState(null);
+console.log(auctionID)
     useEffect(() => {
-        fetch(BIDS_URL)
-        .then((res) => res.json())
-        .then((data) => setBidList(data))
-
-        return () => {
-            setBidList(null)
+        
+        if (!match || !match.params || !match.params.auctionId) {
+            return;
         }
-    }, [])
-    
-    console.log(bidList)
+/*
+       const fetchAuction = async () => {
+            try {
+                const response = await fetch(`https://auctioneer2.azurewebsites.net/auction/${match.params.auctionId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch auction');
+                }
+                const data = await response.json();
+                setAuction(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchAuction();
+
+    */
+
+    }, [match]); 
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+    if (!auction) {
+        return <div>Auction not found</div>;
+    }
 
     return (
-        <>
-            <h2>Title: titleState</h2>
-            <p>Description: DescriptionState</p>
-            <i>Created: Creation DateState</i><br />
-            <i>Time till end: TimeState</i><br />
-            <p>Current bid Leader:</p>
-            {/* {TimeState && <AddBid />}  */}
-        </>
-    )
-}
+        <div>
+            <h2>{auctionID.Title}</h2>
+            <p>Description: {auction.Description}</p>
+            <p>Start Date: {auction.StartDate}</p>
+            <p>End Date: {auction.EndDate}</p>
+            <p>Starting Price: {auction.StartingPrice}</p>
+            {/* Andra detaljer om auktionen */}
+        </div>
+    );
+};
 
-export default SingleAuction
+export default SingleAuction;
