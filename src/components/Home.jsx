@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
+import SingleAuction from "./SingleAuction";
 
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
 // Det här är starten. Vi säger att vi vill göra en sida som vi kallar för 'Home'.
@@ -58,7 +59,8 @@ const Home = () => {
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                    <button><NavLink to='/single-auction'>Go to auction</NavLink></button>
+                    <button><NavLink to='/single-auction'><SingleAuction auctionID={auction}/>Go to auction</NavLink></button>
+                    
                   </div>
               </>
             ))}
