@@ -59,8 +59,7 @@ const Home = () => {
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                    <button><NavLink to='/single-auction'><SingleAuction auctionID={auction}/>Go to auction</NavLink></button>
-                    
+                    <button><NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }} >Go to auction</NavLink></button>
                   </div>
               </>
             ))}

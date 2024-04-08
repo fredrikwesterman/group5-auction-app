@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
+
 
 const SingleAuction = ({ match, auctionID }) => {
-    const [auction, setAuction] = useState(null);
+
+    const location = useLocation();
+    const { auction } = location.state || {}
+
+    console.log(auction)
+
+    const [theauction, settheAuction] = useState(null);
     const [error, setError] = useState(null);
-console.log(auctionID)
+
     useEffect(() => {
         
         if (!match || !match.params || !match.params.auctionId) {
             return;
         }
 /*
-       const fetchAuction = async () => {
+    const fetchAuction = async () => {
             try {
                 const response = await fetch(`https://auctioneer2.azurewebsites.net/auction/${match.params.auctionId}`);
                 if (!response.ok) {
@@ -39,7 +47,7 @@ console.log(auctionID)
 
     return (
         <div>
-            <h2>{auctionID.Title}</h2>
+            <h2>{auction.Title}</h2>
             <p>Description: {auction.Description}</p>
             <p>Start Date: {auction.StartDate}</p>
             <p>End Date: {auction.EndDate}</p>
