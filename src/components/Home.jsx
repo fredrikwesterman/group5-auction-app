@@ -39,6 +39,7 @@ const Home = () => {
       }, [searchInput]);
   
       console.log(searchAuctions)
+      console.log(searchAuctions)
 
 
   
