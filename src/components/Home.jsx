@@ -1,5 +1,6 @@
 // Lägger till React för att kunna använda React-komponenter i den här filen
 import {useEffect, useState} from "react";
+import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
 
@@ -48,15 +49,18 @@ const Home = () => {
 {/* Auktioner som end date som har gått ut ska inte visas i listan */}
 
       <div>
-            { allAuctions && allAuctions.map(auction => (
-                <div key={auction.AuctionID}>
+            {allAuctions && allAuctions.map(auction => (
+              <>
+                  <div key={auction.AuctionID}>
                     <h3>{auction.Title}</h3>
                     <p><b>Seller:</b> {auction.CreatedBy}</p>
                     <p><b>Description: </b>{auction.Description}</p>
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                </div>
+                    <button><NavLink to='/single-auction'>Go to auction</NavLink></button>
+                  </div>
+              </>
             ))}
         </div>
       </>
