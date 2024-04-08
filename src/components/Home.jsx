@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
+import homeStyle from '../styles/Home.module.css'
 import SingleAuction from "./SingleAuction";
 
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
@@ -38,24 +39,23 @@ const Home = () => {
       }, [searchInput]);
   
       console.log(searchAuctions)
+
+
   
     return (
       <>
-      <h1>Hello Team!</h1>
-      {/* <SingleAuction /> */}
-      {/* <CreateAuction /> */}
       <SearchAuction setSearchInput={setSearchInput}/>
       {searchAuctions ? <SearchResults searchAuctions={searchAuctions}/> : <h1>No Auctions found 🤷‍♂️</h1>}
 
 {/* Auktioner som end date som har gått ut ska inte visas i listan */}
 
-      <div>
+      <div className={homeStyle.auctionCardContainer}>
             {allAuctions && allAuctions.map(auction => (
               <>
-                  <div key={auction.AuctionID}>
+                  <div key={auction.AuctionID} className={homeStyle.auctionCard}>
                     <h3>{auction.Title}</h3>
                     <p><b>Seller:</b> {auction.CreatedBy}</p>
-                    <p><b>Description: </b>{auction.Description}</p>
+                    <p><b>Description: </b>{auction.Description.slice(0, 20) + "..."}</p>
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
