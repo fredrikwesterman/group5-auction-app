@@ -26,16 +26,18 @@ const Home = () => {
       console.log(allAuctions)
   
       useEffect(() => {
+
+        const searchTerm = searchInput.toLowerCase();
+
         // Filter allAuctions based on searchInput
-        const filteredAuctions = allAuctions.filter(auction =>
-          auction.Title.toLowerCase().includes(searchInput)
-        );
+        const filteredAuctions = searchTerm
+          ? allAuctions.filter(auction =>
+              auction.Title.toLowerCase().includes(searchTerm)
+            )
+          : [];
         // Update searchAuctions with the filtered result
         setSearchAuctions(filteredAuctions);
   
-        return () => {
-          setSearchAuctions([])
-        }
       }, [searchInput, allAuctions]);
   
       console.log(searchAuctions)
@@ -49,7 +51,7 @@ const Home = () => {
       <div className={homeStyle.searchbar}>
         <SearchAuction setSearchInput={setSearchInput}/>
       </div>
-      {searchAuctions.length > 0 ? (<SearchResults searchAuctions={searchAuctions}/>) : (<h1>No Auctions found 🤷‍♂️</h1>)}
+      {searchAuctions && <SearchResults searchAuctions={searchAuctions}/>}
 
       <div className={homeStyle.auctionCardContainer}>
             {allAuctions && activeAuctions.map(auction => (
