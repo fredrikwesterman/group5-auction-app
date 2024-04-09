@@ -17,6 +17,7 @@ const Home = () => {
       fetch('https://auctioneer2.azurewebsites.net/auction/5mlk')
         .then((response) => response.json())
         .then((data) => setAllAuctions(data))
+        .catch((error) => console.error('Error fetching auctions:', error));
         return () => {
           setAllAuctions(null)      
         }
@@ -35,21 +36,22 @@ const Home = () => {
         return () => {
           setSearchAuctions([])
         }
-      }, [searchInput]);
+      }, [searchInput, allAuctions]);
   
       console.log(searchAuctions)
 
+      const currentDate = new Date();
+      const activeAuctions = allAuctions.filter((auction) => new Date(auction.EndDate) > currentDate);
 
-  
     return (
       <>
       <div className={homeStyle.searchbar}>
         <SearchAuction setSearchInput={setSearchInput}/>
       </div>
-      {searchAuctions ? <SearchResults searchAuctions={searchAuctions}/> : <h1>No Auctions found 🤷‍♂️</h1>}
+      {searchAuctions.length > 0 ? (<SearchResults searchAuctions={searchAuctions}/>) : (<h1>No Auctions found 🤷‍♂️</h1>)}
 
       <div className={homeStyle.auctionCardContainer}>
-            {allAuctions && allAuctions.map(auction => (
+            {allAuctions && activeAuctions.map(auction => (
                   <div key={auction.AuctionID} className={homeStyle.auctionCard}>
                     <h3>{auction.Title}</h3>
                     <p><b>Seller:</b> {auction.CreatedBy}</p>
