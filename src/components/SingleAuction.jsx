@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
+import GetAllBids from './GetAllBids';
 
 
 const SingleAuction = ({ match }) => {
@@ -27,6 +28,7 @@ const SingleAuction = ({ match }) => {
     }
 
     return (
+
         <div>
             <h2>{auction.Title}</h2>
             <p>Description: {auction.Description}</p>
@@ -34,6 +36,7 @@ const SingleAuction = ({ match }) => {
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
             {/* Andra detaljer om auktionen */}
+            <GetAllBids auctionId={auction.AuctionID}/>
         </div>
     );
 };
