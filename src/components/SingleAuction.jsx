@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import GetAllBids from './GetAllBids';
 import AddBid from './AddBid';
 
-
 const SingleAuction = ({ match }) => {
 
     const location = useLocation();
@@ -31,11 +30,6 @@ const SingleAuction = ({ match }) => {
             <p>Start Date: {auction.StartDate}</p>
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
-            <button className={homeStyle.auctionBtn}>
-                <NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
-                        Go to auction
-                </NavLink>
-            </button>
 
             {auction.EndDate > todaysDate ?
                 (
