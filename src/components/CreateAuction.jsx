@@ -41,7 +41,7 @@ const newAuction = () => {
 
     setTimeout(() => {
         setPostAdded(false);
-      }, "3000");
+    }, "3000");
 }
 
     return (
