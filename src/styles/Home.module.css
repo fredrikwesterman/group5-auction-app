@@ -1,13 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+.searchbar {
+    text-align: center;
+}
+
+.inputfield {
+    height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 0.5px solid hsl(0, 0%, 50%);
+    margin-right: 10px;
+}
+
+.searchBtn {
+    height: 40px;
+    border-radius: 10px;
+    border: 0.5px solid hsl(0, 0%, 50%);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    background-color: rgb(204, 202, 202);
+}
 
 .auctionCardContainer {
     font-family: 'Montserrat', 'sans-serif';
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
 }
 
 .auctionCard {
-    max-width: 30%;
-    margin: 15px;
+    width: 25%;
+    margin: 5px 5px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.auctionCard h3 {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.auctionCard p {
+    margin: 5px;
+}
+
+.auctionBtn {
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 0.5px solid hsl(0, 0%, 50%);
+}
+
+.auctionBtn a {
+    text-decoration: none;
+}
+
+.auctionBtn:hover {
+    background-color: rgb(204, 202, 202);
+    border-radius: 10px;
+    cursor: pointer;
 }

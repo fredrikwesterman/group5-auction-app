@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 
 
-const SingleAuction = ({ match, auctionID }) => {
+const SingleAuction = ({ match }) => {
 
     const location = useLocation();
     const { auction } = location.state || {}
@@ -12,29 +12,10 @@ const SingleAuction = ({ match, auctionID }) => {
     const [theauction, settheAuction] = useState(null);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        
+    useEffect(() => {  
         if (!match || !match.params || !match.params.auctionId) {
             return;
         }
-/*
-    const fetchAuction = async () => {
-            try {
-                const response = await fetch(`https://auctioneer2.azurewebsites.net/auction/${match.params.auctionId}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch auction');
-                }
-                const data = await response.json();
-                setAuction(data);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
-        fetchAuction();
-
-    */
-
     }, [match]); 
 
     if (error) {

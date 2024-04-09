@@ -9,6 +9,7 @@ const CreateAuction = () => {
     const [groupCode, setGroupCode] = useState("")
     const [startingPrice, setStartingPrice] = useState("")
     const [createdBy, setCreatedBy] = useState("")
+    const [postAdded, setPostAdded] = useState(false)
 
     const URL = 'https://auctioneer2.azurewebsites.net/auction/5mlk'
 
@@ -27,6 +28,7 @@ const newAuction = () => {
             StartingPrice: startingPrice,
             CreatedBy: createdBy,
         })
+
     })
 
     setTitle("")
@@ -35,6 +37,11 @@ const newAuction = () => {
     setEndDate("")
     setStartingPrice("")
     setCreatedBy("")
+    setPostAdded(true)
+
+    setTimeout(() => {
+        setPostAdded(false);
+    }, "3000");
 }
 
     return (
@@ -106,6 +113,13 @@ const newAuction = () => {
             <br />
 
             <button onClick={(e) => newAuction(e)}>Post Auction</button>
+            <br />
+            {postAdded && 
+                <>
+                    <br />
+                    <div>Post sucessfully added!</div>
+                </>
+            }
         </>
     )
 }
