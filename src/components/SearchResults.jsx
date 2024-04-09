@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const SearchResults = ({ searchAuctions }) => {
     return (
         <div>
@@ -9,6 +11,11 @@ const SearchResults = ({ searchAuctions }) => {
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
+                    <button>
+                        <NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
+                            Go to auction
+                        </NavLink>
+                    </button>
                 </div>
             ))}
         </div>
