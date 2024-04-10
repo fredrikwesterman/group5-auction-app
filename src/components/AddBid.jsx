@@ -7,7 +7,7 @@ const AddBid = ({ auctionId }) => {
     const [bidder, setBidder] = useState("")
     const [groupCode, setGroupCode] = useState("5mlk")
     const [bidAdded, setBidAdded] = useState (false)
-
+    const [responseAdded, setResponseAdded] = useState(false)
     // const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
 
 const newBid = () => {
@@ -25,6 +25,9 @@ const newBid = () => {
         })
     })
 
+    if (!Response.ok) {
+        setResponseAdded(true);
+    }
         setAmount("")
         setAuctionID("")
         setBidid("")
@@ -61,12 +64,8 @@ const newBid = () => {
                 <br/>
                 </form>
                 <button onClick={(e) => newBid(e)}>Add Bid</button>
-                {bidAdded && 
-                <>
-                    <br />
-                    <div>Bid sucessfully added!</div>
-                </>
-                }
+
+                {responseAdded && <p>Bid to low!</p>}
         </div>
     )
 }
