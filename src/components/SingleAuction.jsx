@@ -22,8 +22,8 @@ const SingleAuction = ({ match }) => {
     ////////////////////////////////////////////////
 
 
-    const todaysDate = new Date()
-    console.log(todaysDate.toISOString())
+    const todaysDate = new Date().toISOString()
+    console.log(todaysDate)
     console.log('auctions endDate: ' + auction.EndDate)
 
     return (
@@ -35,7 +35,7 @@ const SingleAuction = ({ match }) => {
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
 
-            {auction.EndDate > todaysDate.toISOString() ?
+            {auction.EndDate > todaysDate ?
                 (
                     <>
                         <AddBid allBids={allBids} setAllBids={setAllBids} auctionId={auction.AuctionID} /> 
@@ -43,9 +43,8 @@ const SingleAuction = ({ match }) => {
                     </>
                 ) : (
                     // component that shows only the last bid here! auctionId={auction.AuctionID} som prop.
-                   <>
-                    <LastBid auctionId={auction.AuctionID} />
-                    
+                    <>
+                        <LastBid auctionId={auction.AuctionID} />
                     </>
                 )
             }
