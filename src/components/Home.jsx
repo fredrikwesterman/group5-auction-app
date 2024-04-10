@@ -41,10 +41,7 @@ const Home = () => {
         setSearchAuctions(filteredAuctions);
   
       }, [searchInput, allAuctions]);
-  
-      console.log(searchAuctions)
-      console.log(searchAuctions)
-
+      
       const currentDate = new Date();
       const activeAuctions = allAuctions.filter((auction) => new Date(auction.EndDate) > currentDate);
 

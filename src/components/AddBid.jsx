@@ -1,44 +1,50 @@
 import { useEffect, useState } from 'react'
 
-const AddBid = ({ auctionId }) => {
+const AddBid = ({ auctionId, allBids, setAllBids }) => {
     const [amount, setAmount] = useState("")
-    const [auctionID, setAuctionID] = useState("")
-    const [bidid, setBidid] = useState("")
     const [bidder, setBidder] = useState("")
-    const [groupcode, setGroupCode] = useState("")
-    const [bidAdded, setBidAdded] = useState (false)
+    const [groupCode, setGroupCode] = useState("5mlk")
+    const [bidToLowAdded, setBidToLowAdded] = useState(false)
+    // const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
 
-    const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
-
-const NewBid = () => {
-    fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json', 
-        },
-        body: JSON.stringify({
-            Amount: amount,
-            AuctionID: auctionID,
-            BidID: bidid,
-            Bidder: bidder,
-            GroupCode: groupcode,
+const newBid = () => {
+    try {
+        allBids.forEach(bid => {
+            if (bid.Amount >= amount) {
+                setBidToLowAdded(true)
+                return
+            }
+        });
+        
+        fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify({
+                Amount: amount,
+                AuctionID: auctionId,
+                Bidder: bidder,
+                GroupCode: groupCode,
+            })
         })
-    })
+        
+        setAmount("")
+        setBidder("")
+        setAllBids([...allBids, {
+            AuctionID: auctionId,
+            Amount: amount,
+            Bidder: bidder,
+            GroupCode: '5mlk'
+        }]);
+        } catch (error) {
+            console.log('Kunde inte lägga till bud: ' + error)
+        }
+    }
 
-    setAmount("")
-    setAuctionID("")
-    setBidid("")
-    setBidder("")
-    setBidAdded(true)
-
-    setTimeout(() => {
-        setBidAdded(false);
-    }, "5000");
-
-  return (
+    return (
     <div>
         <h3>Add New Bid</h3>
-            <form>
                 <label htmlFor="amount">Amount: </label><br />
                 <input
                     type="text" 
@@ -58,16 +64,11 @@ const NewBid = () => {
                     onChange={(e) => setBidder(e.target.value)}
                     />
                 <br/>
-                </form>
-                <button onClick={(e) => NewBid(e)}>Add Bid</button>
-                {bidAdded && 
-                <>
-                    <br />
-                    <div>Bid sucessfully added!</div>
-                </>
-}
+                <button onClick={(e) => newBid(e)}>Add Bid</button>
+
+                {bidToLowAdded && <p>Bid to low!</p>}
         </div>
-  )
-}}
+    )
+}
 
 export default AddBid
