@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 const GetAllBids = ({ auctionId }) => {
 console.log(auctionId)
 
-    const [allBids, setAllBids] = useState(null)
+    const [allBids, setAllBids] = useState([])
 
     useEffect(() => {
         fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`)

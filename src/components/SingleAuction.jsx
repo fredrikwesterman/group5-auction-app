@@ -9,18 +9,21 @@ const SingleAuction = ({ match }) => {
     const { auction } = location.state || {}
     console.log(auction)
 
-    //vad gör detta? :D
-    const [error, setError] = useState(null);
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    //vad gör detta? :D ////////////////////////////
+    const [error, setError] = useState(null);     //
+    if (error) {                                  //
+        return <div>Error: {error}</div>;         //
+    }                                             //
+                                                  //  
+    if (!auction) {                               //
+        return <div>Auction not found</div>;      //
+    }                                             //
+    ////////////////////////////////////////////////
 
-    if (!auction) {
-        return <div>Auction not found</div>;
-    }
 
     const todaysDate = new Date()
-    console.log(todaysDate.toLocaleDateString())
+    console.log(todaysDate.toISOString())
+    console.log('auctions endDate: ' + auction.EndDate)
 
     return (
 
@@ -31,12 +34,12 @@ const SingleAuction = ({ match }) => {
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
 
-            {auction.EndDate > todaysDate ?
+            {auction.EndDate > todaysDate.toISOString() ?
                 (
-            <>
-                <GetAllBids auctionId={auction.AuctionID}/>
-                <AddBid auctionId={auction.AuctionID} /> 
-            </> 
+                    <>
+                        <AddBid auctionId={auction.AuctionID} /> 
+                        <GetAllBids auctionId={auction.AuctionID}/>
+                    </>
                 ) : (
                     // component that shows only the last bid here! auctionId={auction.AuctionID} som prop.
                     <p>Last bid!</p>
