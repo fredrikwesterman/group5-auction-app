@@ -4,7 +4,7 @@ import GetAllBids from './GetAllBids';
 import AddBid from './AddBid';
 
 const SingleAuction = ({ match }) => {
-
+    const [allBids, setAllBids] = useState([])
     const location = useLocation();
     const { auction } = location.state || {}
     console.log(auction)
@@ -37,8 +37,8 @@ const SingleAuction = ({ match }) => {
             {auction.EndDate > todaysDate.toISOString() ?
                 (
                     <>
-                        <AddBid auctionId={auction.AuctionID} /> 
-                        <GetAllBids auctionId={auction.AuctionID}/>
+                        <AddBid allBids={allBids} setAllBids={setAllBids} auctionId={auction.AuctionID} /> 
+                        <GetAllBids allBids={allBids} setAllBids={setAllBids} auctionId={auction.AuctionID}/>
                     </>
                 ) : (
                     // component that shows only the last bid here! auctionId={auction.AuctionID} som prop.
