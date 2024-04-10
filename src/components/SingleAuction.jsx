@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import GetAllBids from './GetAllBids';
 import AddBid from './AddBid';
+import LastBid from './LastBid';
 
 const SingleAuction = ({ match }) => {
     const [allBids, setAllBids] = useState([])
@@ -42,7 +43,10 @@ const SingleAuction = ({ match }) => {
                     </>
                 ) : (
                     // component that shows only the last bid here! auctionId={auction.AuctionID} som prop.
-                    <p>Last bid!</p>
+                   <>
+                    <LastBid auctionId={auction.AuctionID} />
+                    
+                    </>
                 )
             }
         </div>
