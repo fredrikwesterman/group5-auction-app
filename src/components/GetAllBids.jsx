@@ -6,7 +6,7 @@ const GetAllBids = ({ auctionId, allBids, setAllBids }) => {
                 .then((response) => response.json())
                 .then((data) => setAllBids(data))
                 .catch((error) => console.error('Error fetching auctions:', error));
-            }, [allBids])
+            }, [])
 
     return (
         <div>
