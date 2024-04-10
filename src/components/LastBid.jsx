@@ -9,12 +9,15 @@ const LastBid = ({ auctionId }) => {
     const fetchLastBid = async () => {
       try {
        
-        const response = await fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk${auctionId}`);
+        const response = await fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch last bid');
         }
         const data = await response.json();
-        setLastBid (data);
+        const highestBid = data.reduce(function(prev, current) {
+          return (prev && prev.Amount > current.Amount) ? prev : current
+        })
+        setLastBid(highestBid);
       } catch (error) {
         console.error('Error fetching last bid:', error);
       }
@@ -22,7 +25,6 @@ const LastBid = ({ auctionId }) => {
 
     fetchLastBid();
   }, [auctionId]);
-
   return (
     <div>
       {lastBid ? (
@@ -30,6 +32,7 @@ const LastBid = ({ auctionId }) => {
           <h3>Last bid</h3>
           <p>Amount: {lastBid.Amount}</p> 
           <p>Bidder: {lastBid.Bidder}</p>
+          
           
         </div>
       ) : (
