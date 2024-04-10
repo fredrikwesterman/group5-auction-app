@@ -2,21 +2,20 @@ import { useEffect, useState } from 'react'
 
 const AddBid = ({ auctionId, allBids, setAllBids }) => {
     const [amount, setAmount] = useState("")
-    const [auctionID, setAuctionID] = useState("")
-    const [bidid, setBidid] = useState("")
     const [bidder, setBidder] = useState("")
     const [groupCode, setGroupCode] = useState("5mlk")
-    const [bidToLowAdded, setbidToLowAdded] = useState(false)
+    const [bidToLowAdded, setBidToLowAdded] = useState(false)
     // const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
 
 const newBid = () => {
     try {
         allBids.forEach(bid => {
             if (bid.Amount >= amount) {
-                setBitToLowAdded(true)
+                setBidToLowAdded(true)
                 return
             }
         });
+        
         fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/`, {
             method: 'POST',
             headers: {
@@ -30,8 +29,6 @@ const newBid = () => {
             })
         })
         setAmount("")
-        setAuctionID("")
-        setBidid("")
         setBidder("")
         setAllBids([...allBids], {
             AuctionID: auctionId,

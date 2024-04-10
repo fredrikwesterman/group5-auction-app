@@ -7,7 +7,6 @@ const Header = () => {
             <h1>Auction App</h1>
             <Nav />
         </div>
-
     )
 }
 
