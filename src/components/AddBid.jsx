@@ -28,17 +28,18 @@ const newBid = () => {
                 GroupCode: groupCode,
             })
         })
+        
         setAmount("")
         setBidder("")
-        setAllBids([...allBids], {
+        setAllBids([...allBids, {
             AuctionID: auctionId,
             Amount: amount,
             Bidder: bidder,
             GroupCode: '5mlk'
-        })
-    } catch (error) {
-        console.log('Kunde inte lägga till bud: ' + error)
-    }
+        }]);
+        } catch (error) {
+            console.log('Kunde inte lägga till bud: ' + error)
+        }
     }
 
     return (
