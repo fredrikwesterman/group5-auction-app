@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const CreateAuction = () => {
-
+    
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [startDate, setStartDate] = useState("")
@@ -9,39 +9,39 @@ const CreateAuction = () => {
     const [groupCode, setGroupCode] = useState("")
     const [startingPrice, setStartingPrice] = useState("")
     const [createdBy, setCreatedBy] = useState("")
-    const [postAdded, setPostAdded] = useState(false)
-
+    
     const URL = 'https://auctioneer2.azurewebsites.net/auction/5mlk'
+    
+    const newAuction = () => {
+        try {
+            fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Title: title,
+                    Description: description,
+                    StartDate: startDate,
+                    EndDate: endDate,
+                    GroupCode: groupCode,
+                    StartingPrice: startingPrice,
+                    CreatedBy: createdBy,
+                })
+            
+            })
 
-const newAuction = () => {
-    fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            Title: title,
-            Description: description,
-            StartDate: startDate,
-            EndDate: endDate,
-            GroupCode: groupCode,
-            StartingPrice: startingPrice,
-            CreatedBy: createdBy,
-        })
+            setTitle("")
+            setDescription("")
+            setStartDate("")
+            setEndDate("")
+            setStartingPrice("")
+            setCreatedBy("")
+            setPostAdded(true)
 
-    })
-
-    setTitle("")
-    setDescription("")
-    setStartDate("")
-    setEndDate("")
-    setStartingPrice("")
-    setCreatedBy("")
-    setPostAdded(true)
-
-    setTimeout(() => {
-        setPostAdded(false);
-    }, "3000");
+    } catch(error) {
+        console.log("Could not post new auction!" + error)
+    }
 }
 
     return (
@@ -114,12 +114,6 @@ const newAuction = () => {
 
             <button onClick={(e) => newAuction(e)}>Post Auction</button>
             <br />
-            {postAdded && 
-                <>
-                    <br />
-                    <div>Post sucessfully added!</div>
-                </>
-            }
         </>
     )
 }
