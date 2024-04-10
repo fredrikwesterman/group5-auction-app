@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const RemoveAuctionButton = ({ auction }) => {
-// const [bidsEmpty, setBidsEmpty] = useState(auction.bids.length === 0);
-  const [bidsEmpty, setBidsEmpty] = useState(true);
+const RemoveAuctionButton = ({ auction, allBids }) => {
+  // const [bidsEmpty, setBidsEmpty] = useState(auction.bids.length === 0);
+    
   const handleRemove = () => {
     const confirmation = window.confirm('Are you sure you want to delete this auction?');
     if (confirmation) {
@@ -23,7 +23,7 @@ const RemoveAuctionButton = ({ auction }) => {
     }
   };
 
-  return bidsEmpty ? (
+  return (allBids.length === 0) ? (
     <button  onClick={handleRemove}>Remove</button>
   ) : null;
 };

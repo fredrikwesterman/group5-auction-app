@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import GetAllBids from './GetAllBids';
 import AddBid from './AddBid';
 import LastBid from './LastBid';
+import RemoveAuctionButton from "./RemoveAuctionButton";
 
 const SingleAuction = ({ match }) => {
     const [allBids, setAllBids] = useState([])
@@ -34,6 +35,8 @@ const SingleAuction = ({ match }) => {
             <p>Start Date: {auction.StartDate}</p>
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
+
+            <RemoveAuctionButton auction={auction} allBids = {allBids} />
 
             {auction.EndDate > todaysDate ?
                 (
