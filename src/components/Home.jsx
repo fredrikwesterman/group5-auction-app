@@ -5,6 +5,8 @@ import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
 import homeStyle from '../styles/Home.module.css'
 
+import RemoveAuctionButton from "./RemoveAuctionButton";
+
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
 // Det här är starten. Vi säger att vi vill göra en sida som vi kallar för 'Home'.
 const Home = () => {
@@ -67,6 +69,9 @@ const Home = () => {
                         Go to auction
                       </NavLink>
                     </button>
+
+                    <RemoveAuctionButton auction={auction} />
+                    
                   </div>
             ))}
         </div>
