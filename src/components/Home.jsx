@@ -14,6 +14,7 @@ const Home = () => {
   
   // Gets all the Current auctions, they are stored in allAuctions. Send this as props for you components that needs the auctions.
     useEffect(() => {
+
       fetch('https://auctioneer2.azurewebsites.net/auction/5mlk')
         .then((response) => response.json())
         .then((data) => setAllAuctions(data))
@@ -39,10 +40,7 @@ const Home = () => {
         setSearchAuctions(filteredAuctions);
   
       }, [searchInput, allAuctions]);
-  
-      console.log(searchAuctions)
-      console.log(searchAuctions)
-
+      
       const currentDate = new Date();
       const activeAuctions = allAuctions.filter((auction) => new Date(auction.EndDate) > currentDate);
 

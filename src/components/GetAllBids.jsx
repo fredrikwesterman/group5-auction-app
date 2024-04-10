@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const GetAllBids = ({ auctionId, allBids, setAllBids }) => {
     useEffect(() => {
-        fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`)
-            .then((response) => response.json())
-            .then((data) => setAllBids(data))
-            .catch((error) => console.error('Error fetching auctions:', error));
-        }, [allBids])
+            fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`)
+                .then((response) => response.json())
+                .then((data) => setAllBids(data))
+                .catch((error) => console.error('Error fetching auctions:', error));
+            }, [allBids])
 
     return (
         <div>
