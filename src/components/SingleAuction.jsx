@@ -43,7 +43,10 @@ const SingleAuction = ({ match }) => {
                     </>
                 ) : (
                     // component that shows only the last bid here! auctionId={auction.AuctionID} som prop.
-                    <p>Last bid!</p>
+                   <>
+                    <LastBid auctionId={auction.AuctionID} />
+                    
+                    </>
                 )
             }
         </div>
