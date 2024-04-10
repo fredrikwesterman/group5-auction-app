@@ -1,19 +1,12 @@
 import { useState, useEffect } from 'react'
 
-const GetAllBids = ({ auctionId }) => {
-console.log(auctionId)
-
-    const [allBids, setAllBids] = useState([])
-
+const GetAllBids = ({ auctionId, allBids, setAllBids }) => {
     useEffect(() => {
         fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`)
             .then((response) => response.json())
             .then((data) => setAllBids(data))
             .catch((error) => console.error('Error fetching auctions:', error));
-        }, [])
-        
-        console.log(allBids)
-
+        }, [allBids])
 
     return (
         <div>
