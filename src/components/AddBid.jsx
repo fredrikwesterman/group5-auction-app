@@ -5,37 +5,38 @@ const AddBid = ({ auctionId }) => {
     const [auctionID, setAuctionID] = useState("")
     const [bidid, setBidid] = useState("")
     const [bidder, setBidder] = useState("")
-    const [groupcode, setGroupCode] = useState("")
+    const [groupCode, setGroupCode] = useState("5mlk")
     const [bidAdded, setBidAdded] = useState (false)
 
-    const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
+    // const URL = `https://auctioneer2.azurewebsites.net/bid/5mlk/${auctionId}`
 
-const NewBid = () => {
-    fetch(URL, {
+const newBid = () => {
+    fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', 
         },
         body: JSON.stringify({
             Amount: amount,
-            AuctionID: auctionID,
+            AuctionID: auctionId,
             BidID: bidid,
             Bidder: bidder,
-            GroupCode: groupcode,
+            GroupCode: groupCode,
         })
     })
 
-    setAmount("")
-    setAuctionID("")
-    setBidid("")
-    setBidder("")
-    setBidAdded(true)
+        setAmount("")
+        setAuctionID("")
+        setBidid("")
+        setBidder("")
+        setBidAdded(true)
 
-    setTimeout(() => {
-        setBidAdded(false);
-    }, "5000");
+        setTimeout(() => {
+            setBidAdded(false);
+        }, "5000");
+    }
 
-  return (
+    return (
     <div>
         <h3>Add New Bid</h3>
             <form>
@@ -59,15 +60,15 @@ const NewBid = () => {
                     />
                 <br/>
                 </form>
-                <button onClick={(e) => NewBid(e)}>Add Bid</button>
+                <button onClick={(e) => newBid(e)}>Add Bid</button>
                 {bidAdded && 
                 <>
                     <br />
                     <div>Bid sucessfully added!</div>
                 </>
-}
+                }
         </div>
-  )
-}}
+    )
+}
 
 export default AddBid
