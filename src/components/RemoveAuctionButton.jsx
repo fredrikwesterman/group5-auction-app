@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const RemoveAuctionButton = ({ auction, allBids }) => {
   // const [bidsEmpty, setBidsEmpty] = useState(auction.bids.length === 0);
-    
+  const navigate=useNavigate();
+
   const handleRemove = () => {
     const confirmation = window.confirm('Are you sure you want to delete this auction?');
     if (confirmation) {
@@ -12,6 +14,7 @@ const RemoveAuctionButton = ({ auction, allBids }) => {
         .then(response => {
           if (response.ok) {
             // How to update the UI after deleting the auction ?
+            navigate('/');
             console.log('Auction deleted successfully');
           } else {
             throw new Error('Failed to delete auction');
