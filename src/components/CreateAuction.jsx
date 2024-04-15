@@ -55,8 +55,8 @@ const CreateAuction = () => {
 }
     return (
         <>
-        <div className="divider"></div>
-            <div className="container mx-auto">
+        <div className="flex justify-center">
+            <div>
                 <label htmlFor="createdBy">Created By</label><br />
                 <input
                     type="text" 
@@ -121,11 +121,9 @@ const CreateAuction = () => {
                     onChange={(e) => setEndDate(e.target.value)}
                     />
                     <br />
-
+                    <button className="btn btn-primary mt-4" onClick={(e) => newAuction(e)}>Post Auction</button>
+                </div>
             </div>
-            <br />
-
-            <button className="btn btn-primary" onClick={(e) => newAuction(e)}>Post Auction</button>
             <br />
         </>
     )
