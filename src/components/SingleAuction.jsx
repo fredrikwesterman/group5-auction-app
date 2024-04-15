@@ -28,16 +28,15 @@ const SingleAuction = ({ match }) => {
     console.log('auctions endDate: ' + auction.EndDate)
 
     return (
-
-        <div>
+        <div className='flex justify-center'>
+        <div className=''>
             <h2>{auction.Title}</h2>
             <p>Description: {auction.Description}</p>
             <p>Start Date: {auction.StartDate}</p>
             <p>End Date: {auction.EndDate}</p>
             <p>Starting Price: {auction.StartingPrice}</p>
-
+            <div className='divider'></div>
             <RemoveAuctionButton auction={auction} allBids = {allBids} />
-
             {auction.EndDate > todaysDate ?
                 (
                     <>
@@ -51,6 +50,7 @@ const SingleAuction = ({ match }) => {
                     </>
                 )
             }
+        </div>
         </div>
     );
 };

@@ -1,6 +1,8 @@
 import { useState } from "react"
+import {useNavigate} from 'react-router-dom';
 
 const CreateAuction = () => {
+    const navigate=useNavigate();
     
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -13,6 +15,7 @@ const CreateAuction = () => {
     const URL = 'https://auctioneer2.azurewebsites.net/auction/5mlk'
     
     const newAuction = () => {
+        
         try {
             fetch(URL, {
                 method: 'POST',
@@ -28,8 +31,15 @@ const CreateAuction = () => {
                     StartingPrice: startingPrice,
                     CreatedBy: createdBy,
                 })
-            
             })
+            .then(response => {
+                if(response.ok){
+                    navigate('/');
+                } else {
+                    throw new Error('Failed to post auction!');
+                }
+            })
+            .catch((error) => console.log("failed to post auction" + error))
 
             setTitle("")
             setDescription("")
@@ -75,7 +85,7 @@ const CreateAuction = () => {
                     required
                     rows="3"
                     cols="44"
-                    className="textarea textarea-bordered "
+                    className="textarea textarea-bordered"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     />

@@ -13,7 +13,7 @@ const GetAllBids = ({ auctionId, allBids, setAllBids }) => {
 
     return (
         <div>
-            <ul>
+            <ul className='flex gap-4'>
                 {allBids && allBids.map(bid => (
                     <li key={bid.BidID}>
                         <p>Bid: {bid.Amount}kr</p>

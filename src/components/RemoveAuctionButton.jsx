@@ -25,9 +25,12 @@ const RemoveAuctionButton = ({ auction, allBids }) => {
         });
     }
   };
-
+  
   return (allBids.length === 0) ? (
-    <button  onClick={handleRemove}>Remove</button>
+    <>
+    <button className='btn btn-secondary' onClick={handleRemove}>Remove</button>
+    <div className='divider'></div>
+    </>
   ) : null;
 };
 
