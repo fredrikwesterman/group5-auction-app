@@ -35,11 +35,11 @@ const SingleAuction = ({ match }) => {
         <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
           <img src={placeholder} alt='placeholder img' className="object-cover object-center" />
         </div>
-        <h2>{auction.Title}</h2>
-        <p>Description: {auction.Description}</p>
-        <p>Start Date: {auction.StartDate}</p>
-        <p>End Date: {auction.EndDate}</p>
-        <p>Starting Price: {auction.StartingPrice}</p>
+        <h2><b>{auction.Title}</b></h2>
+        <p><b>Description: </b>{auction.Description}</p>
+        <p><b>Start Date: </b>{auction.StartDate}</p>
+        <p><b>End Date: </b>{auction.EndDate}</p>
+        <p><b>Starting Price: </b>{auction.StartingPrice}</p>
         <div className="divider"></div>
         <RemoveAuctionButton auction={auction} allBids={allBids} />
         {auction.EndDate > todaysDate ? (
