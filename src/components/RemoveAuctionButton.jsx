@@ -35,6 +35,7 @@ const RemoveAuctionButton = ({ auction, allBids }) => {
       {allBids.length == 0 && auction.EndDate > new Date().toISOString() && <button className="btn btn-secondary" onClick={handleRemove}>
         Remove
       </button>}
+
       <div className="divider"></div>
     </>
   )

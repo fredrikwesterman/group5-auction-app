@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction";
 import SearchResults from "./SearchResults";
+
 import placeholder from '../img/placeholder.png'
+
 
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
 // Det här är starten. Vi säger att vi vill göra en sida som vi kallar för 'Home'.

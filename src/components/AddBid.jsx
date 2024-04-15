@@ -9,6 +9,7 @@ const AddBid = ({ auctionId, allBids, setAllBids }) => {
 
   const newBid = () => {
     try {
+
       let isBidTooLow = false;
 
       allBids.forEach((bid) => {
@@ -93,6 +94,7 @@ const AddBid = ({ auctionId, allBids, setAllBids }) => {
           <span class="absolute top-0 bottom-0 right-0 px-4 py-3 mb-4"></span>
         </div>
       )}
+
     </div>
   );
 };

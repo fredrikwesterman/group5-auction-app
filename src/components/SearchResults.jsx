@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import placeholder from '../img/placeholder.png'
 
+
 const SearchResults = ({ searchAuctions }) => {
   return (
     <>
