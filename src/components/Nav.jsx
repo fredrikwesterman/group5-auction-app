@@ -4,8 +4,8 @@ const Nav = () => {
 return (
     <nav>
         <ul className="flex justify-end">
-            <li className="btn btn-ghost text-xl"><NavLink to='/'>Home</NavLink></li>
-            <li className="btn btn-ghost text-xl"><NavLink to='/create-auction'>Create Auction</NavLink></li>
+            <li><NavLink className="btn btn-ghost text-xl" to='/'>Home</NavLink></li>
+            <li><NavLink className="btn btn-ghost text-xl" to='/create-auction'>Create Auction</NavLink></li>
         </ul>
     </nav>
     )

@@ -13,8 +13,8 @@ const SearchResults = ({ searchAuctions }) => {
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                    <button className="btn btn-primary">
-                        <NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
+                    <button>
+                        <NavLink className="btn btn-primary"  to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
                             Go to auction
                         </NavLink>
                     </button>
