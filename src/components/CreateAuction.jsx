@@ -43,15 +43,15 @@ const CreateAuction = () => {
         console.log("Could not post new auction!" + error)
     }
 }
-
     return (
         <>
-            <h3>Add New Auction:</h3>
-            <form>
+        <div className="divider"></div>
+            <div className="container mx-auto">
                 <label htmlFor="createdBy">Created By</label><br />
                 <input
                     type="text" 
                     id="createdBy"
+                    className="input input-bordered w-full max-w-xs"
                     required
                     value={createdBy}
                     onChange={(e) => setCreatedBy(e.target.value)}
@@ -62,6 +62,7 @@ const CreateAuction = () => {
                 <input
                     type="text" 
                     id="title"
+                    className="input input-bordered w-full max-w-xs "
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -72,8 +73,9 @@ const CreateAuction = () => {
                 <textarea
                     id="description"
                     required
-                    rows="4"
-                    cols="22"
+                    rows="3"
+                    cols="44"
+                    className="textarea textarea-bordered "
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     />
@@ -83,6 +85,7 @@ const CreateAuction = () => {
                 <input
                     type="text" 
                     id="startingPrice"
+                    className="input input-bordered w-full max-w-xs"
                     required
                     value={startingPrice}
                     onChange={(e) => setStartingPrice(e.target.value)}
@@ -109,10 +112,10 @@ const CreateAuction = () => {
                     />
                     <br />
 
-            </form>
+            </div>
             <br />
 
-            <button onClick={(e) => newAuction(e)}>Post Auction</button>
+            <button className="btn btn-primary" onClick={(e) => newAuction(e)}>Post Auction</button>
             <br />
         </>
     )

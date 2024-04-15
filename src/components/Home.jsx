@@ -47,11 +47,13 @@ const Home = () => {
 
     return (
       <>
-      <div className={homeStyle.searchbar}>
+      <div className="flex justify-center">
         <SearchAuction setSearchInput={setSearchInput}/>
       </div>
-      {searchAuctions && <SearchResults searchAuctions={searchAuctions}/>}
 
+      <div className="divider"></div>
+      {searchAuctions && <SearchResults searchAuctions={searchAuctions}/>}
+      
      <div className="container mx-auto grid grid-cols-4 gap-4">
             {allAuctions && activeAuctions.map(auction => (
       <div className="card w-200 bg-base-100 shadow-xl ">
@@ -67,9 +69,6 @@ const Home = () => {
                         Go to auction
                       </NavLink>
                     </button>
-
-                    
-                    
                   </div>
             </div>
             ))}
