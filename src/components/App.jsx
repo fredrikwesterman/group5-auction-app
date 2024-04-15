@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+        <Header />
         <Routes>
             <Route exact path="/" element={<Home/>}></Route>
             <Route path="/create-auction" element={<CreateAuction/>}></Route>

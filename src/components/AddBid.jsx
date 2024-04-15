@@ -64,7 +64,7 @@ const newBid = () => {
                     onChange={(e) => setBidder(e.target.value)}
                     />
                 <br/>
-                <button onClick={(e) => newBid(e)}>Add Bid</button>
+                <button className="btn btn-primary" onClick={(e) => newBid(e)}>Add Bid</button>
 
                 {bidToLowAdded && <p>Bid to low!</p>}
         </div>
