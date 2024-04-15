@@ -52,16 +52,17 @@ const Home = () => {
       </div>
       {searchAuctions && <SearchResults searchAuctions={searchAuctions}/>}
 
-      <div className={homeStyle.auctionCardContainer}>
+     <div className="container mx-auto grid grid-cols-4 gap-4">
             {allAuctions && activeAuctions.map(auction => (
-                  <div key={auction.AuctionID} className={homeStyle.auctionCard}>
+      <div className="card w-200 bg-base-100 shadow-xl ">
+                  <div key={auction.AuctionID} className="card-body">
                     <h3>{auction.Title}</h3>
                     <p><b>Seller:</b> {auction.CreatedBy}</p>
                     <p><b>Description: </b>{auction.Description.slice(0, 20) + "..."}</p>
                     <p><b>Start Price: </b>{auction.StartingPrice}</p>
                     <p><b>Created: </b>{auction.StartDate}</p>
                     <p><b>Ending: </b>{auction.EndDate}</p>
-                    <button className={homeStyle.auctionBtn}>
+                    <button className="btn btn-primary">
                       <NavLink to={`/single-auction/${auction.AuctionID}`} state={{ auction }}>
                         Go to auction
                       </NavLink>
@@ -70,6 +71,7 @@ const Home = () => {
                     
                     
                   </div>
+            </div>
             ))}
         </div>
       </>

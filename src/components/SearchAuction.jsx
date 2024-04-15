@@ -7,12 +7,12 @@ const SearchAuction = ({ setSearchInput }) => {
 
     return (
         <>
-            <input className={homeStyle.inputfield}
+            <input className="input input-bordered w-24 md:w-auto"
                 ref={searchInput}
                 type="text" 
                 placeholder="Type auction name"
             />
-            <button className={homeStyle.searchBtn} onClick={() => setSearchInput(searchInput.current.value)}>Search for auction</button>
+            <button className="btn btn-ghost text-m" onClick={() => setSearchInput(searchInput.current.value)}>Search for auction</button>
         </>
     )
 }
