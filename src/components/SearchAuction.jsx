@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import homeStyle from '../styles/Home.module.css'
 
 const SearchAuction = ({ setSearchInput }) => {
 

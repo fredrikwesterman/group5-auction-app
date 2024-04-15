@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const AddBid = ({ auctionId, allBids, setAllBids }) => {
     const [amount, setAmount] = useState("")
