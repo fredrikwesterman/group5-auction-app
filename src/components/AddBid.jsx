@@ -9,37 +9,47 @@ const AddBid = ({ auctionId, allBids, setAllBids }) => {
 
   const newBid = () => {
     try {
+
+      let isBidTooLow = false;
+
       allBids.forEach((bid) => {
         if (bid.Amount >= amount) {
           setBidToLowAdded(true);
+          isBidTooLow = true;
           return;
         }
       });
+      
+      if (!isBidTooLow) {
+        fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            Amount: amount,
+            AuctionID: auctionId,
+            Bidder: bidder,
+            GroupCode: groupCode,
+          }),
+        });
 
-      fetch(`https://auctioneer2.azurewebsites.net/bid/5mlk/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Amount: amount,
-          AuctionID: auctionId,
-          Bidder: bidder,
-          GroupCode: groupCode,
-        }),
-      });
+        setBidToLowAdded(false)
+
+        setAllBids([
+          ...allBids,
+          {
+            AuctionID: auctionId,
+            Amount: amount,
+            Bidder: bidder,
+            GroupCode: "5mlk",
+          },
+        ]);
+
+      }
 
       setAmount("");
       setBidder("");
-      setAllBids([
-        ...allBids,
-        {
-          AuctionID: auctionId,
-          Amount: amount,
-          Bidder: bidder,
-          GroupCode: "5mlk",
-        },
-      ]);
     } catch (error) {
       console.log("Kunde inte lägga till bud: " + error);
     }
@@ -72,8 +82,19 @@ const AddBid = ({ auctionId, allBids, setAllBids }) => {
       <button className="btn btn-primary mt-4 mb-4" onClick={(e) => newBid(e)}>
         Add Bid
       </button>
+      <br />
 
-      {bidToLowAdded && <p>Bid to low!</p>}
+      {bidToLowAdded && (
+        <div
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
+          <strong class="font-bold">Bid Was to low!</strong>
+          <span class="block sm:inline">You need to bid a higher amount!</span>
+          <span class="absolute top-0 bottom-0 right-0 px-4 py-3 mb-4"></span>
+        </div>
+      )}
+
     </div>
   );
 };

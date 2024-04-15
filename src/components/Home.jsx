@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction";
 import SearchResults from "./SearchResults";
 
+import placeholder from '../img/placeholder.png'
+
+
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
 // Det här är starten. Vi säger att vi vill göra en sida som vi kallar för 'Home'.
 const Home = () => {
@@ -59,6 +62,9 @@ const Home = () => {
         {allAuctions &&
           activeAuctions.map((auction) => (
             <div className="card w-200 bg-base-100 shadow-xl ">
+              <figure className="px-10 pt-10">
+                <img src={placeholder} alt="placeholder" className="rounded-xl" />
+              </figure>
               <div key={auction.AuctionID} className="card-body">
                 <h3>{auction.Title}</h3>
                 <p>

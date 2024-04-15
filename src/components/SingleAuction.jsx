@@ -4,6 +4,7 @@ import GetAllBids from "./GetAllBids";
 import AddBid from "./AddBid";
 import LastBid from "./LastBid";
 import RemoveAuctionButton from "./RemoveAuctionButton";
+import placeholder from '../img/placeholder.png'
 
 const SingleAuction = ({ match }) => {
   const [allBids, setAllBids] = useState([]);
@@ -31,6 +32,9 @@ const SingleAuction = ({ match }) => {
   return (
     <div className="flex justify-center">
       <div>
+        <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
+          <img src={placeholder} alt='placeholder img' className="object-cover object-center" />
+        </div>
         <h2>{auction.Title}</h2>
         <p>Description: {auction.Description}</p>
         <p>Start Date: {auction.StartDate}</p>
