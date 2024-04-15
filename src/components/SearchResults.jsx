@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import placeholder from '../img/placeholder.png'
 
 const SearchResults = ({ searchAuctions }) => {
   return (
@@ -6,6 +7,9 @@ const SearchResults = ({ searchAuctions }) => {
       <div className="flex gap-4">
         {searchAuctions.map((auction) => (
           <div className="card w-200 bg-base-100 shadow-xl ">
+            <figure className="px-10 pt-10">
+                <img src={placeholder} alt="placeholder" className="rounded-xl" />
+              </figure>
             <div key={auction.AuctionID} className="card-body">
               <h3>{auction.Title}</h3>
               <p>
