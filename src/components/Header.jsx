@@ -1,4 +1,3 @@
-import headerStyle from '../styles/Header.module.css'
 import Nav from './Nav'
 
 const Header = () => {

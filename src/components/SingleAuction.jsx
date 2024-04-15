@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import GetAllBids from './GetAllBids';
 import AddBid from './AddBid';
@@ -29,7 +29,7 @@ const SingleAuction = ({ match }) => {
 
     return (
         <div className='flex justify-center'>
-        <div className=''>
+        <div>
             <h2>{auction.Title}</h2>
             <p>Description: {auction.Description}</p>
             <p>Start Date: {auction.StartDate}</p>

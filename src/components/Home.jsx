@@ -3,8 +3,6 @@ import {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import SearchAuction from "./SearchAuction"
 import SearchResults from "./SearchResults"
-import homeStyle from '../styles/Home.module.css'
-
 
 
 // Vi börjar med att lägga till en bit kod som gör en sida med en enkel React-komponent
@@ -52,7 +50,11 @@ const Home = () => {
       </div>
 
       <div className="divider"></div>
-      {searchAuctions && <SearchResults searchAuctions={searchAuctions}/>}
+      {searchInput !== '' && searchAuctions.length < 1 ? (
+        <>Not Found</>
+      ) : (
+        <SearchResults searchAuctions={searchAuctions}/>
+      )}
       
      <div className="container mx-auto grid grid-cols-4 gap-4">
             {allAuctions && activeAuctions.map(auction => (
