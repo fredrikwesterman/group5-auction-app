@@ -7,7 +7,7 @@ import RemoveAuctionButton from "./RemoveAuctionButton";
 import placeholder from '../img/placeholder.png'
 
 const SingleAuction = ({ match }) => {
-  const [allBids, setAllBids] = useState([]);
+  const [allBids, setAllBids] = useState(null);
   const location = useLocation();
   const { auction } = location.state || {};
   console.log(auction);
