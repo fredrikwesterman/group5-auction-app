@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 const RemoveAuctionButton = ({ auction, allBids }) => {
-  // const [bidsEmpty, setBidsEmpty] = useState(auction.bids.length === 0);
   const navigate = useNavigate();
 
   const handleRemove = () => {
@@ -32,13 +31,14 @@ const RemoveAuctionButton = ({ auction, allBids }) => {
 
   return (
     <>
-      {allBids.length == 0 && auction.EndDate > new Date().toISOString() && <button className="btn btn-secondary" onClick={handleRemove}>
-        Remove
-      </button>}
-
+      {allBids !== null && allBids.length === 0 && auction.EndDate > new Date().toISOString() && (
+        <button className="btn btn-secondary" onClick={handleRemove}>
+          Remove
+        </button>
+      )}
       <div className="divider"></div>
     </>
-  )
-}
+  );
+};
 
 export default RemoveAuctionButton;
